@@ -206,7 +206,7 @@ public class IndividualRestController extends AuditableExtIdRestController<Indiv
         EntityIterator<Residency> residencies = residencyService.findAll(new Sort("uuid"));
         List<Residency> filteredResidencies = new ArrayList<>();
         for (Residency residency: residencies) {
-            if(residency.getLocation().getUuid().equals(locationUuid)) {
+            if(residency.getLocation().getUuid().equals(locationUuid) && residency.getEndDate() == null) {
                 filteredResidencies.add(residency);
             }
         }
